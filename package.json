@@ -13,7 +13,8 @@
 		"node": ">=10"
 	},
 	"scripts": {
-		"build": "node build",
+		"cook": "tailwindcss build styles.css -o output.css",
+		"build": "npm run cook && node build",
 		"prepare": "npm run build",
 		"test": "xo && tsd && ava"
 	},

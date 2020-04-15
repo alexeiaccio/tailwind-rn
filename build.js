@@ -6,7 +6,10 @@ const cssToReactNative = require('css-to-react-native').default;
 const pkgJson = require('tailwindcss/package.json');
 
 const pkgPath = require.resolve('tailwindcss').replace(pkgJson.main, '');
-const source = fs.readFileSync(path.join(pkgPath, pkgJson.style), 'utf8');
+let source = fs.readFileSync('./output.css', 'utf8');
+if (!source) {
+	source = fs.readFileSync(path.join(pkgPath, pkgJson.style), 'utf8');
+}
 const {stylesheet} = css.parse(source);
 
 const remToPx = value => `${parseFloat(value) * 16}px`;
